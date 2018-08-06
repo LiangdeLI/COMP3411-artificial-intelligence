@@ -1,0 +1,35 @@
+% Liangde Li
+% z5077896
+% comp3411 Assignment 1
+
+% Question 1
+sumsq_neg([], 0).
+
+sumsq_neg([Head|Tail], Sum) :-
+    Head >= 0,
+    sumsq_neg(Tail, Sum).
+
+sumsq_neg([Head|Tail], Sum) :-
+    Head < 0,
+    sumsq_neg(Tail, PartSum),
+    Sum is Head * Head + PartSum.
+
+% Question 2
+likes(mary, apple).
+likes(mary, pear).
+likes(mary, grapes).
+likes(tim, mango).
+likes(tim, apple).
+likes(jane, apple).
+likes(jane, mango).
+
+all_like_all(_,[]).
+
+all_like_all([],_).
+
+all_like_all([Head|Tail], [First|Rest]) :-
+    likes(Head, First),
+    all_like_all([Head], Rest),
+    all_like_all(Tail, [First|Rest]).
+
+    
